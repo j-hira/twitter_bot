@@ -1,4 +1,5 @@
 .ssh
 .vscode-server
 .gitconfig
-
+.env
+.cache
