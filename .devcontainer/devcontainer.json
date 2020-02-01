@@ -6,13 +6,5 @@
     ],
     "service": "app",
     "workspaceFolder": "/work",
-    // "extensions": [
-    // ],
-    // "settings": {
-    //   "editor.tabSize": 2,
-    //   "files.insertFinalNewline": true,
-    //   "files.trimFinalNewlines": true,
-    //   "terminal.integrated.shell.linux": "/bin/bash"
-    // },
-    "shutdownAction": "stopCompose" // or "stopCompose"
+    "shutdownAction": "stopCompose"
   }

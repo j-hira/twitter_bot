@@ -3,7 +3,7 @@ services:
     app:
         image: golang:1.13
         working_dir: /work
-        tty: true # コンテナを起動させ続ける
+        tty: true
         ports:
             - 8000:8000
         volumes:
