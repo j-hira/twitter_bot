@@ -15,7 +15,7 @@ func main() {
 	text := "現在時刻: "
 	ticker := time.NewTicker(time.Second * 60 * 30) // 30分ごとに定期実行
 	defer ticker.Stop()
-	tweet, err := api.PostTweet("ボットくん始動", nil)
+	tweet, err := api.PostTweet("ボットくん始動 "+getDate(), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
