@@ -11,12 +11,25 @@ import (
 
 func main() {
 	api := twitter.GetApi()
+
 	text := "現在時刻: "
-	tweet, err := api.PostTweet(text+getDate(), nil)
+	ticker := time.NewTicker(time.Second * 60 * 30) // 30分ごとに定期実行
+	defer ticker.Stop()
+	tweet, err := api.PostTweet("ボットくん始動", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Println(tweet.Text)
+	for {
+		select {
+		case <-ticker.C:
+			tweet, err := api.PostTweet(text+getDate(), nil)
+			if err != nil {
+				log.Fatal(err)
+			}
+			log.Println(tweet.Text)
+		}
+	}
 }
 
 func getDate() string {
