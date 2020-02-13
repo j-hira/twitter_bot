@@ -5,8 +5,6 @@ import (
 	"time"
 
 	"github.com/j-hira/twitter_bot/twitter"
-
-	_ "github.com/joho/godotenv/autoload"
 )
 
 func Run() {
@@ -19,7 +17,9 @@ func Run() {
 		select {
 		case <-ticker.C:
 			t := initTime()
+			// 時間による処理分けを別に切り出す
 			timeSignal(t, api)
+			weatherForecast(t, api, "Nagoya")
 		}
 	}
 }

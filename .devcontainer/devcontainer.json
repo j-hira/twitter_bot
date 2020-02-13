@@ -4,6 +4,12 @@
       "../docker-compose.yml",
       "docker-compose.extend.yml"
     ],
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash",
+      "go.gopath": "/go",
+      "go.inferGopath": true,
+      "go.useLanguageServer": true
+    },
     "extensions": [
       "ms-vscode.go"
     ],
