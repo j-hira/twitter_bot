@@ -7,6 +7,7 @@ import (
 	"github.com/j-hira/twitter_bot/twitter"
 )
 
+// Run : botを起動する関数
 func Run() {
 	api := twitter.GetApi()
 

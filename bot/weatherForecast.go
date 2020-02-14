@@ -13,7 +13,7 @@ import (
 )
 
 // https://mholt.github.io/json-to-go/
-type weatherJson struct {
+type weatherJSON struct {
 	Cod     string `json:"cod"`
 	Message int    `json:"message"`
 	Cnt     int    `json:"cnt"`
@@ -82,7 +82,7 @@ func weatherForecast(t time.Time, api *anaconda.TwitterApi, city string) {
 		return
 	}
 	jsonBytes := ([]byte)(byteArray)
-	data := new(weatherJson)
+	data := new(weatherJSON)
 	if err := json.Unmarshal(jsonBytes, data); err != nil {
 		log.Println(err)
 		return
