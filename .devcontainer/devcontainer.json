@@ -1,19 +1,20 @@
 {
-    "name": "Remote-dev Project",
-    "dockerComposeFile": [
-      "../docker-compose.yml",
-      "docker-compose.extend.yml"
-    ],
-    "settings": {
-      "terminal.integrated.shell.linux": "/bin/bash",
-      "go.gopath": "/go",
-      "go.inferGopath": true,
-      "go.useLanguageServer": true
-    },
-    "extensions": [
-      "ms-vscode.go"
-    ],
-    "service": "app",
+	"name": "Remote-containers Go",
+	"dockerComposeFile": [
+		"../docker-compose.yml",
+		"docker-compose.extend.yml"
+	],
+	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"go.gopath": "/go"
+	},
+
+	"extensions": [
+		"ms-vscode.go"
+	],
+	"service": "app",
     "workspaceFolder": "/work",
     "shutdownAction": "stopCompose"
-  }
+}
