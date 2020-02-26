@@ -89,7 +89,8 @@ func weatherForecast(t time.Time, api *anaconda.TwitterApi, city string) {
 	}
 	tweet, err := api.PostTweet(data.List[0].Weather[0].Main, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
+		return
 	}
 	log.Println(tweet.Text)
 }

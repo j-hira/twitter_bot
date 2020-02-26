@@ -13,7 +13,8 @@ func timeSignal(t time.Time, api *anaconda.TwitterApi) {
 	}
 	tweet, err := api.PostTweet("現在時刻: "+getDate(t), nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
+		return
 	}
 	log.Println(tweet.Text)
 }
