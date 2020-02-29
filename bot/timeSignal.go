@@ -1,22 +1,16 @@
 package bot
 
 import (
-	"log"
 	"time"
 
-	"github.com/ChimeraCoder/anaconda"
+	"github.com/j-hira/twitter_bot/twitter"
 )
 
-func timeSignal(t time.Time, api *anaconda.TwitterApi) {
+func timeSignal(t time.Time) {
 	if min := t.Minute(); min != 0 && min != 30 {
 		return
 	}
-	tweet, err := api.PostTweet("現在時刻: "+getDate(t), nil)
-	if err != nil {
-		log.Println(err)
-		return
-	}
-	log.Println(tweet.Text)
+	twitter.TweetText("現在時刻: "+getDate(t))
 }
 
 func getDate(t time.Time) string {

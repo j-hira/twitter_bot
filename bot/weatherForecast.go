@@ -9,7 +9,7 @@ import (
 	"log"
 	"encoding/json"
 
-	"github.com/ChimeraCoder/anaconda"
+	"github.com/j-hira/twitter_bot/twitter"
 )
 
 // https://mholt.github.io/json-to-go/
@@ -66,7 +66,7 @@ type weatherJSON struct {
 	} `json:"city"`
 }
 
-func weatherForecast(t time.Time, api *anaconda.TwitterApi, city string) {
+func weatherForecast(t time.Time, city string) {
 	if t.Minute() != 0 {
 		return
 	}
@@ -87,10 +87,5 @@ func weatherForecast(t time.Time, api *anaconda.TwitterApi, city string) {
 		log.Println(err)
 		return
 	}
-	tweet, err := api.PostTweet(data.List[0].Weather[0].Main, nil)
-	if err != nil {
-		log.Println(err)
-		return
-	}
-	log.Println(tweet.Text)
+	twitter.TweetText(data.List[0].Weather[0].Main)
 }
