@@ -1,7 +1,6 @@
 package bot
 
 import (
-	"time"
 	"os"
 	"net/http"
 	"fmt"
@@ -66,10 +65,7 @@ type weatherJSON struct {
 	} `json:"city"`
 }
 
-func weatherForecast(t time.Time, city string) {
-	if t.Minute() != 0 {
-		return
-	}
+func weatherForecast(city string) {
 	url := "http://api.openweathermap.org/data/2.5/forecast?q=%s&appid=%s"
 	resp, err := http.Get(fmt.Sprintf(url, city, os.Getenv("WEATHER_API_KEY")))
 	if err != nil {

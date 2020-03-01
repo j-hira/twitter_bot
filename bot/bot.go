@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+var currentTime time.Time
+
 // Run : botを起動する関数
 func Run() {
 	ticker := time.NewTicker(time.Second * 60)
@@ -13,10 +15,13 @@ func Run() {
 	for {
 		select {
 		case <-ticker.C:
-			t := initTime()
-			// 時間による処理分けを別に切り出す
-			timeSignal(t)
-			weatherForecast(t, "Nagoya")
+			currentTime = initTime()
+			exeFuncAtSpecifiedTime(timeSignal, []int{}, []int{0, 30})
+			exeFuncAtSpecifiedTime(weatherForecastNagoya, []int{6}, []int{0})
 		}
 	}
+}
+
+func weatherForecastNagoya() {
+	weatherForecast("Nagoya")
 }
